@@ -200,6 +200,31 @@ const atualizarFilme = async (req, res) => {
     }
 }
 
+const deletarFilme = async (req, res) => {
+    const { id } = req.params;
+    try {
+        let filmes = await lerArquivo();
+        let filme = await filmes.find((filme) => {
+            return filme.id === Number(id);
+        });
+        if(!filme){
+            return res
+            .status(404)
+            .json({ mensagem: "Esse id não foi encontrado!" })
+        }
+        filmes = await filmes.filter((filme) => {
+            return filme.id !== Number(id)
+        })
+        await escreverArquivo(filmes);
+        return res
+            .status(204)
+            .json()
+    }catch(error){
+        return res
+            .status(500)
+            .json({ "Error no servidor": error.message})
+    }
+}
 
 module.exports = {
     listarFilmes,
@@ -207,4 +232,5 @@ module.exports = {
     obterFilme,
     alterarFilme,
     atualizarFilme,
+    deletarFilme
 }

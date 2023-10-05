@@ -15,4 +15,6 @@ rotas.put('/filmes/:id', conferirAutentificacao, verificarCampos, filmes.alterar
 
 rotas.patch('/filmes/:id', conferirAutentificacao, verificarId, verificarUmCampo, filmes.atualizarFilme);
 
+rotas.delete('/filmes/:id', conferirAutentificacao, verificarId, filmes.deletarFilme)
+
 module.exports = rotas;
