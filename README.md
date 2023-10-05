@@ -28,3 +28,16 @@ Nela mostrarei:
     <span style="margin: 0;">VSCode</span>
 </div>
 
+## Bibliotecas
+
+ - Express
+   
+ - FS
+   
+## Primeiros Passos
+
+- Criação do arquivo package.json para aplicação
+
+  ```
+  npm init -y
+  ```
