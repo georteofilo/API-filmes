@@ -16,6 +16,8 @@ Nela mostrarei:
    
  - Leitura e escrita de arquivos
 
+ - Utilização de funções assincronas
+
 ## Ferramentas
 
 - <div>
@@ -62,4 +64,41 @@ Nela mostrarei:
 <div align="center">
   <img src="https://i.imgur.com/fadnnzS.png" />
 </div>
-  
+
+- Configurando o index.js
+
+     - Chamada do pacote express
+ 
+     - Utilização de dados tipo json
+ 
+     - Utilizar a porta 3000 para o servidor
+
+ <div align="center">
+  <img src="https://i.imgur.com/yYzBIKH.png" />
+</div>
+
+- Criação e primeira configuração do arquivo routes.js (rotas)
+ 
+     - Dentro da pasta src crie o arquivo routes.js
+ 
+     - Import o pacote express que sera usado para as rotas
+ 
+     - exportacao de rotas
+
+ <div align="center">
+  <img src="https://i.imgur.com/d0MXaML.png" />
+</div>
+
+- Criação da pasta data, onde guardaremos nosso arquivo json de filmes
+
+- Criação da pasta controller, onde colocaremos nossos controladores.
+
+     Os controladores são os arquivos onde estarão as funções para controlar nossa aplicação.
+
+     Aqui utilizaremos um controlador que é filmes.js
+
+- Criação da pasta middleware, onde colocaremos nossos intermediários.
+
+    Aqui criarei um de autentificação e outro de verificação dos dados enviados para o servidor
+
+
