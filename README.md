@@ -539,7 +539,73 @@ Nela mostrarei:
 
    Criar a rota PATCH ('/filmes/id'), aqui utilizarei apenas o id também para caso a pessoa mude o titulo do filme.
 
-    rotas.patch('/filmes/:id', conferirAutentificacao, verificarCampos, filmes.alterarFilme)
+    rotas.patch('/filmes/:id', conferirAutentificacao, verificarId, verificarUmCampo, filmes.atualizarFilme);
 
-   A rota para alteração do filme, terá que conferir se tem autorização e se existe todos os campos. Esses intermediários, já foram criados anteriormente.
- 
+   A rota para alteração do filme, terá que conferir se tem autorização e se existe pelo menos um dos campos. Autorização já criada anteriormente.
+
+### 1 - Criação da função verificarID como intermediário
+
+  - Nela vamos apenas verificar se a pessoa passou um id e se ele é valido. Se não retorna o status(400) com a mensagem de erro de id inválido.
+
+### 2 - Criação da função verificarUmCampo como intermediário
+
+  - Nela vamos apenas verificar se a pessoa passou pelo menos um campo para ser alterado. Se não retorna o status(400) com a mensagem de erro que pelo menos um campo é necessário.
+    
+### 3 - Criação da função atualizarFilmes
+
+  - Usando destruturação para pegar o id vindo como params
+
+  - Usando destruturação para pegar os campos do objeto filme que vier do body
+
+  - Leitura do array de filmes no arquivo
+
+  - Pesquisar o id dado para fazer a alteração do filme, caso não encontre, ele retorna o status(404) com a mensagem de erro que o filme não foi encontrado.
+
+  - Vai conferir quais campos foram dados e com isso altera pelo novo campo
+
+  - salvar o array com o filme atualizado no arquivo filmes
+
+  - Retornar o status(204) sem mensagem no body.
+
+### 4 - Requisição no Insomnia
+
+  Já mostrei em outras rotas como seria o erro caso falhe na autorização. Por isso não mostrarei neste.
+  
+#### 4.1 - Erro de id inválido
+
+Filmes com id de 1 ao 11, por isso pesquisarei o 16
+
+<div align="center">
+  <img src="https://i.imgur.com/PciVwOR.png" />
+  <p>Erro ao procurar o id=16</p>
+</div>
+  
+#### 4.2 - Erro por não ter nenhum campo para alterar
+
+<div align="center">
+  <img src="https://i.imgur.com/GyokSSM.png" />
+  <p>Erro ao não mandar nenhum campo no body</p>
+</div>
+
+#### 4.3 - Campo duração do filme alterado
+
+Filme com id 8 terá a duração de 2h11 alterado para 2h20
+
+<div align="center">
+  <img src="https://i.imgur.com/ZPduz96.png" />
+  <p>Filme alterado com sucesso.</p>
+</div>
+
+<div align="center">
+  <img src="https://i.imgur.com/x5bFIC3.png" />
+  <p>Filme antes de ser alterado.</p>
+</div>
+
+<div align="center">
+  <img src="https://i.imgur.com/neehp0t.png" />
+  <p>Filme depois de ser alterado.</p>
+</div>
+
+##  Criação de uma rota Delete para apagar um filme do banco de dados
+
+
