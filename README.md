@@ -365,5 +365,181 @@ Nela mostrarei:
 
    Criar a rota GET "./filmes/:idOuTitulo", onde pesquisaremos pelo Id ou Titulo do filme
 
-   ### 1 - 
+     rotas.get("/filmes/:idOuTitulo", filmes.obterFilme);
+
+   A rota não terá intermediários, já que se não colocar id ou titulo irá listar todos os filmes. Já que também é uma consultae não irá alterar o arquivo não precisaria de uma autorização.
+
+  ### 1 - Criação da função obterFilme
+
+   - Com uma destruturação pegaremos o idOuTitulo com o params.
+
+   - Como outras funções assincronas iremos por dentro de um try catch.
+
+   - Ler o arquivo e salvar na variável filmes.
+
+   - verificar se tem um filme com aquele id nos filmes.
+
+   - Não tendo filme com aquele id, pesquisaremos com o titulo do filme e caso não tenha aparecerá, com o status(404) que o filme não existe.
+
+   - Caso encontre o filme, será a respondindo com o status(200) e o objeto do filme pesquisado.
+
+  ### 2 - Requisição no Insomnia
+
+   Na nossa lista no momento terá 11 filmes. Com todos os ids de 1 ao 11.
+
+   #### 2.1 - Pesquisar um Id não existente
+
+   <div align="center">
+     <img src="https://i.imgur.com/as2MbG9.png" />
+     <p>Mensagem de filme não existe com o Id = 15</p>
+   </div>
+
+   #### 2.2 - Pesquisar um titulo não existente
+
+   **_:warning:OBS: Lembre só encontrará um titulo com o nome escrito igual no dados daquele filme, caso contrario ele não irá encontra-lo._**
+ 
+   <div align="center">
+     <img src="https://i.imgur.com/PbZQUhC.png" />
+     <p>Mensagem de filme não existe com titulo = O Resgate do Soldado Ryan</p>
+   </div>
+
+   #### 2.3 - Pesquisar um id existente
    
+   <div align="center">
+     <img src="https://i.imgur.com/3UoHdhV.png" />
+     <p>Filme encontrado com o id=8</p>
+   </div>
+
+   #### 2.4 - Pesquisar um titulo existente
+   
+   <div align="center">
+     <img src="https://i.imgur.com/jMsvwrC.png" />
+     <p>Filme encontrado com o titulo=Forrest Gump</p>
+   </div>
+
+ ##  Criação de uma rota PUT para alterar dados de um filme
+
+   Criar a rota PUT ('/filmes/id'), aqui utilizarei apenas o id para alterar o restante dos dados, inclusive o titulo.
+
+    rotas.put('/filmes/:id', conferirAutentificacao, verificarCampos, filmes.alterarFilme)
+
+   A rota para alteração do filme, terá que conferir se tem autorização e se existe todos os campos. Esses intermediários, já foram criados anteriormente.
+
+  ### 1 - Criação da função alterarFilmes
+
+   - Pegar o id que entrará como um params
+
+   - Ler o arquivo e salvar em uma variável que será utilizada
+
+   - Procurar o id do filme que será alterado, caso não encontre, retonará um erro de status(404) com a mensagem que o id não foi encontrado.
+
+   - Tendo já conferido se existe todos os campos com o intermediário, vamos alterar todos os dados do filme.
+
+   - Tirar o filme com o id indicado do array de filmes
+
+   - Salvar o novo filme no array de filmes
+
+   - Escrever no arquivo o novo array de filmes, com o filme já alterado.
+   - 
+   - Retornar o status(204) sem nenhuma mensagem no body
+
+  ### 2 - Requisição no Insomnia
+
+   Usando o Id 8 como params para fazer toda alteração. 
+
+   Filme atual no id 8
+
+      {
+        "id": 8,
+        "titulo": "Trovão Tropical",
+        "ano": "2008",
+        "genero": [
+            "Ação",
+            "Comédia",
+            "Guerra"
+        ],
+        "duracao": "1h47",
+        "diretor": [
+            "Ben Stiller"
+        ],
+        "roteiro": [
+            "Justin Theroux",
+            "Ben Stiller",
+            "Etan Cohen"
+        ],
+        "elenco": [
+            "Robert Downey Jr.",
+            "Ben Stiller",
+            "Jack Black"
+        ],
+        "imagem": "http://www.impawards.com/2008/posters/tropic_thunder_ver4_xlg.jpg",
+        "trailer": "https://www.imdb.com/video/vi2139141657/?ref_=ext_shr_lnk",
+        "sinopse": "Através de uma série de eventos estranhos, um grupo de atores que filmam um filme de guerra de grande orçamento são forçados a se tornarem os soldados que estão retratando."
+     }
+
+   Filme pelo o qual será alterado
+
+       {
+          "titulo": "Círculo de Fogo",
+          "ano": "2013",
+          "genero": [
+              "Ação",
+              "Aventura",
+              "Ficção Cientifica"
+          ],
+          "duracao": "2h11",
+          "diretor": [
+              "Guillermo del Toro"
+          ],
+          "roteiro": [
+              "Travis Beacham",
+              "Guillermo del Toro"
+          ],
+          "elenco": [
+              "Charlie Hunnam",
+              "Idris Elba",
+              "Rinko Kikuchi"
+          ],
+          "imagem": "http://www.impawards.com/2013/posters/pacific_rim_xlg.jpg",
+          "trailer": "https://www.imdb.com/video/vi1369752345/?ref_=ext_shr_lnk",
+          "sinopse": "Na guerra entre os humanos e monstros do mar, um ex piloto e um estagiário se juntam para tentar salvar o mundo."
+        }
+
+  #### 2.1 - Erro de usuário errado
+
+   Devido já ter usado um exemplo quando a senha está errada, utilizarei nesse o usuário errado.
+
+   <div align="center">
+     <img src="https://i.imgur.com/qFVjINj.png" />
+     <p>Erro ao tentar alterar com usuário errado</p>
+   </div>
+
+ #### 2.2 - Erro pela falta de um campo
+ 
+   <div align="center">
+     <img src="https://i.imgur.com/5hxR2or.png" />
+     <p>Erro pela falta do campo duração</p>
+   </div>
+
+ #### 2.3 - Filme alterado
+ 
+   <div align="center">
+     <img src="https://i.imgur.com/0UkA6VR.png" />
+     <p>Status(204) que filme foi alterado com sucesso</p>
+   </div>
+
+ #### 2.4 - Filme alterado já na lista de filmes
+ 
+ <div align="center">
+   <img src="https://i.imgur.com/7n69a5r.png" />
+   <p>Lista de filmes já com o filme alterado, id=8</p>
+ </div>
+
+##  Criação de uma rota PATCH para alterar algum campo de um filme
+
+   Criar a rota PATCH ('/filmes/id'), aqui utilizarei apenas o id também para caso a pessoa mude o titulo do filme.
+
+    rotas.patch('/filmes/:id', conferirAutentificacao, verificarCampos, filmes.alterarFilme)
+
+   A rota para alteração do filme, terá que conferir se tem autorização e se existe todos os campos. Esses intermediários, já foram criados anteriormente.
+ 
