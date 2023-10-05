@@ -5,7 +5,7 @@ const conferirAutentificacao = (req, res, next) => {
         return res
             .status(400)
             .json({ mensagem: "Usuário e senha são obrigatórios."})
-    } else if(usuario === 'admin' && senha === 'admin@123'){
+    } else if(usuario !== 'admin' || senha !== 'admin@123'){
         return res
             .status(403)
             .json({ mensagem: "Usuário e senha inválidos ou usuário não tem autorização."})
