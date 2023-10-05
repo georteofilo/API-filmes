@@ -50,6 +50,11 @@ Nela mostrarei:
   
 ### 2 - Criação do arquivo .gitignore para não incluir o node_modules no repositório
 
+<div align="center">
+  <img src="https://i.imgur.com/rOqm1TA.png" />
+  <p>.gitignore com o node_module</p>
+</div>
+
 ### 3 - Instalação do pacote do Express (4.18.2)
 
   ```
@@ -63,6 +68,7 @@ Nela mostrarei:
   ```
 
 ### 5 - Criação da pasta src e criação do arquivo index.js
+
 <div align="center">
   <img src="https://i.imgur.com/fadnnzS.png" />
   <p>Imagem da pasta src e do arquivo index.js</p>
