@@ -20,23 +20,21 @@ Nela mostrarei:
 
 ## Ferramentas
 
-- <div>
-    <img src="https://seeklogo.com/images/I/insomnia-logo-A35E09EB19-seeklogo.com.png" width="15" height="15"/>
-    <span style="margin: 0;">Insomnia</span>
-</div>
+- ![Insomnia](https://img.shields.io/badge/Insomnia-black?style=for-the-badge&logo=insomnia&logoColor=5849BE)
 
-  - <div>
-    <img src="https://tinyurl.com/yw4r9fvx" width="15" height="15" />
-    <span style="margin: 0;">VSCode</span>
-</div>
+- ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-## Bibliotecas
+- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
- - Express
+- ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
+## Pacotes
+
+ - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
    
- - Nodemon
+ - ![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
    
- - FS
+ - fs, vem com o Node.js
    
 ## Primeiros Passos
 
