@@ -146,15 +146,13 @@ Nela mostrarei:
   
       app.use(rotas);
 
-## Leitura e Escrita de Arquivos
+## Leitura de Arquivos
 
-  Para a utilização dos dados, precisaremos ler e escrever no arquivo filmes.json.
+  Para a utilização dos dados, precisaremos ler o arquivo filmes.json.
 
-  Com isso no arquivo do controlador filmes, vou criar duas funções.
+  Com isso, no arquivo do controlador filmes, vou criar uma função assincrona.
   
-  A primeira para leitura que utilizaremos para nossa primeira rota
-
-### Leitura
+  A função assincrona para leitura que utilizaremos para nossa primeira rota será leituraArquivo
 
   - Chamada o pacote fs/promises, que já vem no node.js para leitura de arquivos
 
