@@ -9,3 +9,19 @@ const leituraArquivo = async () => {
     }
 }
 
+const listarFilmes = async (req, res) => {
+    try {
+        const filmes = await leituraArquivo();
+        return res
+            .status(200)
+            .json(filmes)
+    }catch(erro){
+        return res
+            .status(500)
+            .json({ mensagem: `Erro no servidor: ${erro.message}` });
+    }
+}
+
+module.exports = {
+    listarFilmes
+}
