@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
 
-const leituraArquivo = async () => {
+const lerArquivo = async () => {
     try {
         const filmes = await fs.readFile('./src/data/filmes.json');
         return (JSON.parse(filmes));
@@ -9,9 +9,10 @@ const leituraArquivo = async () => {
     }
 }
 
+
 const listarFilmes = async (req, res) => {
     try {
-        const filmes = await leituraArquivo();
+        const filmes = await lerArquivo();
         return res
             .status(200)
             .json(filmes)
@@ -21,6 +22,8 @@ const listarFilmes = async (req, res) => {
             .json({ mensagem: `Erro no servidor: ${erro.message}` });
     }
 }
+
+
 
 module.exports = {
     listarFilmes
