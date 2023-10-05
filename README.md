@@ -32,6 +32,8 @@ Nela mostrarei:
 
  - Express
    
+ - Nodemon
+   
  - FS
    
 ## Primeiros Passos
@@ -41,3 +43,23 @@ Nela mostrarei:
   ```
   npm init -y
   ```
+  
+- Criação do arquivo .gitignore para não incluir o node_modules no repositório
+
+- Instalação do pacote do Express (4.18.2)
+
+  ```
+  npm install express
+  ```
+  
+- Instalação do pacote do Nodemon (3.0.1) para desenvolvimento por isso o -D
+
+  ```
+  npm install -D nodemon
+  ```
+
+- Criação da pasta src e criação do arquivo index.js
+<div align="center">
+  <img src="https://i.imgur.com/fadnnzS.png" />
+</div>
+  
