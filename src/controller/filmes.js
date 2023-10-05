@@ -145,10 +145,66 @@ const alterarFilme = async(req, res) => {
     }
 }
 
+const atualizarFilme = async (req, res) => {
+    const { id } = req.params;
+    const { titulo, ano, genero, duracao, diretor, roteiro,  elenco, imagem, trailer, sinopse } = req.body;
+
+    try{
+        let filmes = await lerArquivo();
+        let filme = await filmes.find((filme) => {
+            return filme.id === Number(id);
+        });
+        if(!filme){
+            return res
+                .status(404)
+                .json({ mensagem: "Filme não encontrado com esse Id."});
+        }
+        if(titulo){
+            filme.titulo = titulo;
+        }
+        if(ano){
+            filme.ano = ano;
+        }
+        if(genero){
+            filme.genero = genero;
+        }
+        if(duracao){
+            filme.duracao = duracao;
+        }
+        if(diretor){
+            filme.diretor = diretor;
+        }
+        if(roteiro){
+            filme.roteiro = roteiro;
+        }
+        if(elenco){
+            filme.elenco = elenco;
+        }
+        if(imagem){
+            filme.imagem = imagem;
+        }
+        if(trailer){
+            filme.trailer = trailer;
+        }
+        if(sinopse){
+            filme.sinopse = sinopse;
+        }
+        await escreverArquivo(filmes);
+        return res
+            .status(204)
+            .json()
+    }catch(erro){
+        return res
+        .status(500)
+        .json({ mensagem: `Erro no servidor: ${erro.message}` });
+    }
+}
+
 
 module.exports = {
     listarFilmes,
     cadastrarFilme,
     obterFilme,
-    alterarFilme
+    alterarFilme,
+    atualizarFilme,
 }
