@@ -9,7 +9,7 @@ const lerArquivo = async () => {
     }
 }
 
-const escreverArquivo = async (filmes) {
+const escreverArquivo = async (filmes) => {
     try {
         filmes.sort((a,b) => {
             return a.id - b.id;
