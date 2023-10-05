@@ -419,7 +419,7 @@ Nela mostrarei:
 
  ##  Criação de uma rota PUT para alterar dados de um filme
 
-   Criar a rota PUT ('/filmes/id'), aqui utilizarei apenas o id para alterar o restante dos dados, inclusive o titulo.
+   Criar a rota PUT ('/filmes/:id'), aqui utilizarei apenas o id para alterar o restante dos dados, inclusive o titulo.
 
     rotas.put('/filmes/:id', conferirAutentificacao, verificarCampos, filmes.alterarFilme)
 
@@ -608,4 +608,54 @@ Filme com id 8 terá a duração de 2h11 alterado para 2h20
 
 ##  Criação de uma rota Delete para apagar um filme do banco de dados
 
+ Criar a rota DELETE ('/filmes/:id'), utilizando o id para a busca do filme que deseja apagar.
 
+    rotas.delete('/filmes/:id', conferirAutentificacao, verificarId, filmes.deletarFilme)
+
+ Utilizando os intermediários já criados anteriormente
+ 
+### 1 - Criação da função deletarFilme
+
+ - Com desetruturação para pegar o id por params
+
+ - Ler o arquivo e salvar em uma variável como um array
+
+ - Pesquisar o filme pelo o id passado, caso não tenha uma resposta com status(404) e mensagem de erro que o id não foi encontrado.
+
+ - Se tiver um id, ele irá alterar o array de filmes retirando o filme com o id dado usando a função filter
+
+ - Escreve o novo array sem o filme com o id dado no arquivo e assim retira o filme do banco de dados.
+
+ - Tudo certo será retornado a resposta(204) sem mensagem no body
+
+### 2 - Requisição no Insomnia
+
+ Utilizando o id 8 como exemplo novamente, não irei repetir os erros que já foi demonstrado nas demais rotas.
+
+#### 2.1 - Retirando o filme com id 8 da lista
+
+<div align="center">
+  <img src="https://i.imgur.com/adHKYI3.png" />
+  <p>Lista com o filme no id 8</p>
+</div>
+
+<div align="center">
+  <img src="https://i.imgur.com/3S6DHgT.png" />
+  <p>Resposta com o status(204)</p>
+</div>
+
+<div align="center">
+  <img src="https://i.imgur.com/jJ0ElnW.png" />
+  <p>Lista dos filmes sem o id 8, filme apagado</p>
+</div>
+
+##  Projeto Finalizado
+
+  Aqui finalizo o projeto, a ideia era criar um repositório com uma aplicação onde demonstro o que aprendi em aula no curso Backend da Cubos Academy.
+  No 2º modulo aprendemos sobre servidor, rotas e intermediários, organização de uma API Rest, utilização dos verbos para requisição do servidor e status de resposta.
+
+  A ideia foi mostrar na pratica tudo isso e explicando o que foi pensando e a forma que foi feita cada etapa, espero poder ter ajudado e ter conseguido transmitir tudo.
+
+  Qualquer dúvida, critica construtiva, sugestão, estarei sempre a disposição.
+
+  
