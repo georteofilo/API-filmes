@@ -13,6 +13,8 @@ Nela mostrarei:
  - Conectar em um servidor com o pacote express
  
  - Utilizar verbos e cada finalidade
+
+ - Utilizar os status de requisição em cada resposta
    
  - Leitura e escrita de arquivos
 
@@ -38,32 +40,33 @@ Nela mostrarei:
    
 ## Primeiros Passos
 
-### Criação do arquivo package.json para aplicação
+### 1 - Criação do arquivo package.json para aplicação
 
   ```
   npm init -y
   ```
   
-### Criação do arquivo .gitignore para não incluir o node_modules no repositório
+### 2 - Criação do arquivo .gitignore para não incluir o node_modules no repositório
 
-### Instalação do pacote do Express (4.18.2)
+### 3 - Instalação do pacote do Express (4.18.2)
 
   ```
   npm install express
   ```
   
-### Instalação do pacote do Nodemon (3.0.1) para desenvolvimento por isso o -D
+### 4 - Instalação do pacote do Nodemon (3.0.1) para desenvolvimento por isso o -D
 
   ```
   npm install -D nodemon
   ```
 
-### Criação da pasta src e criação do arquivo index.js
+### 5 - Criação da pasta src e criação do arquivo index.js
 <div align="center">
   <img src="https://i.imgur.com/fadnnzS.png" />
+  <p>Imagem da pasta src e do arquivo index.js</p>
 </div>
 
-### Configurando o index.js
+### 6 - Configurando o index.js
 
    - Chamada do pacote express
 
@@ -73,9 +76,10 @@ Nela mostrarei:
 
  <div align="center">
   <img src="https://i.imgur.com/yYzBIKH.png" />
+  <p>index.js</p>
 </div>
 
-### Criação e primeira configuração do arquivo routes.js (rotas)
+### 7 - Criação e primeira configuração do arquivo routes.js (rotas)
  
    - Dentro da pasta src crie o arquivo routes.js
 
@@ -85,25 +89,27 @@ Nela mostrarei:
 
  <div align="center">
   <img src="https://i.imgur.com/d0MXaML.png" />
+  <p>routes.js</p>
 </div>
 
-### Criação da pasta data, onde guardaremos nosso arquivo json de filmes
+### 8 - Criação da pasta data, onde guardaremos nosso arquivo json de filmes
 
-### Criação da pasta controller, onde colocaremos nossos controladores.
+### 9 - Criação da pasta controller, onde colocaremos nossos controladores.
 
    Os controladores são os arquivos onde estarão as funções para controlar nossa aplicação.
 
    Aqui utilizaremos um controlador que é filmes.js
 
-### Criação da pasta middleware, onde colocaremos nossos intermediários.
+### 10 -Criação da pasta middleware, onde colocaremos nossos intermediários.
 
    Aqui criarei um de autentificação e outro de verificação dos dados enviados para o servidor
 
 <div align="center">
   <img src="https://i.imgur.com/MJIwCma.png" />
+  <p>Organização das pastas da API</p>
 </div>
 
-### Criação dos dados filmes.json
+### 11 - Criação dos dados filmes.json
   
   Eu já criei o filmes.json um array de objetos filme, esse array colocarei 10 filmes. Ficando dessa maneira para cada filme:
 
@@ -138,7 +144,7 @@ Nela mostrarei:
 
    Todos os dados e trailer retirados do [IMDB](https://www.imdb.com/?ref_=nv_home), com as imagens retiradas do [IMP Awards](http://www.impawards.com)
 
-### Chamando o arquivo de rotas no index.js
+### 12 - Chamando o arquivo de rotas no index.js
 
       const rotas = require('./routes');
   
@@ -154,21 +160,26 @@ Nela mostrarei:
 
   - Chamada o pacote fs/promises, que já vem no node.js para leitura de arquivos
 
-  - Criação da função leituraArquivo, uma função assincrona pq é necessário esperar a promessa da função readFile do pacote fs.
+  - Criação da função leituraArquivo, uma função assincrona porque é necessário esperar a promessa da função readFile do pacote fs.
     
-  - Como teremos a chamada da função assincrona readFile, utilizamos o try catch para evitar erros e mostrar qual erro foi dado.
+  - Como teremos a chamada da função assincrona readFile, utilizamos o try catch para evitar erros e se houver algun, mostrar qual erro foi dado.
 
   - Chamar a função assincrona readFile com await, devido a ser uma função assincrona e ter que esperar sua resposta para retornar o array filmes.
+
+  - para o local do arquivo no readFile, aconselhavel a colocar todo o diretório, que aqui no meu é ./src/data/filmes.json
+
+        const filmes = await fs.readFile('./src/data/filmes.json');
 
   - O retorno do array de filmes e para isso sua transformação em json com JSON.parse(nome da variavel)
 
 <div align="center">
   <img src="https://i.imgur.com/BdF55QE.png" />
+  <p>Função assincrona lerAquivo</p>
 </div>
 
 ## Criação de Rotas e Requisições
 
-### Criação da rota GET "/filmes" onde lista os filmes do arquivo filmes.json
+### 1 - Criação da rota GET "/filmes" onde lista os filmes do arquivo filmes.json
 
    O verbo GET é usado para pegar dados do servidor, aqui pegaremos os filmes que estão salvo nos dados. Por isso utilizaremos GET
 
@@ -184,9 +195,10 @@ Nela mostrarei:
 
 <div align="center">
   <img src="https://i.imgur.com/b3Kr5n4.png" />
+  <p>Função listarFilmes</p>
 </div>
 
-### Rodando o Servidor
+### 2 - Rodando o Servidor
 
   Para rodar o servidor, eu gosto de ir no arquivo package.json e em scripts adicionar o seguinte script
 
@@ -198,11 +210,10 @@ Nela mostrarei:
 
 <div align="center">
   <img src="https://i.imgur.com/UDC0QIs.png" />
+  <p>Servidor rodando com Nodemon</p>
 </div>
-
- Servidor Rodando
  
-### Utilização do Insomnia para as rotas
+### 3 - Utilização do Insomnia para as rotas
 
    - Criei uma nova coleção apenas para esse projeto, chamei de API - Filmes
      
@@ -212,10 +223,147 @@ Nela mostrarei:
 
 <div align="center">
   <img src="https://i.imgur.com/nxbiiUv.png" />
+  <p>Requisição no Insomnia</p>
 </div>
 
 ## Criação da rota POST "/filmes" - Cadastrar filme
 
+### 1 - Criando um intermediário para conferir autentificação
 
+  Para esse projeto criarei um sistema de autentificação, onde precisa de um usuario e senha passado por query params para fazer o cadastro.
 
+  Na função faço uma verificação se passou o usuário e senha como query params, caso não, aparece erro status 400 com a mensagem que são obrigatórios.
+  
+  Outra verificação é se o usuário é admin e a senha é admin@123, caso não, aparece erro status(403) onde o usuário ou a senha estão incorretos ou não tem autorização.
 
+  Depois chamei a função no arquivo routes.js para ser utilizada como intermediário.
+
+    const conferirAutentificacao = require('./middleware/autentificacao');
+
+### 2 - Criando um intermediário para verificação dos campos para o cadastro
+
+  Para verificar se todos os campos para o cadastro do filme foi enviada, criei uma função chamada verificarCamposCadastro.
+
+  Com essa função ele apenas confere se falta algum campo, caso falte um ou mais campos, uma resposta de erro status (400) onde todos os campos são obrigatórios.
+
+  Chamar a função no arquivo routes.js para ser utilizada.
+  
+    const { verificarCamposCadastro } = require('./middleware/verificacao');
+
+### 3 - Criação da função assincrona escreverArquivo
+
+   - Essa função é criada no controlador filmes.js
+
+   - Ela recebe como parametro o array de filmes que será salvo no arquivo
+
+   - Nela coloquei uma função sort para colocar de forma crescente o array de filmes baseado no id antes de escrever no arquivo.
+
+   - Usando o pacote fs/promises, que vem no node.js, usando a função assincrona writeFile,
+
+   - Assim como no readFile, coloquei o diretório do arquivo todo
+
+         await fs.writeFile('./src/data/filmes.json', JSON.stringify(filmes));
+     
+   - E como pode ver, para salvar no arquivo ele precisa passar para string, com isso utilizei o JSON.stringify(nome da variavel) para passar para string ao escrever no arquivo
+
+   **_:warning:OBS: Lembre que ao escrever o arquivo ele escreve por cima do que já tinha o arquivo. Logo qualquer alteração no arquivo será salva._**
+
+<div align="center">
+  <img src="https://i.imgur.com/alQwyeE.png" />
+  <p>Função assincrona escreverArquivo</p>
+</div>
+
+### 4 - Criação da função assincrona cadastrarFilmes
+
+   - A função é assincrona devido a utilização de leitura e escrita em arquivos.
+     
+   - Primeiro é salvar os campos enviados na requisição pelo body, fazendo uma destruturação das variáveis, a verificação já foi feita pelo intermediário.
+
+   - Agora eu verifico se o filme a ser cadastrado já possui no banco de dados, com isso não será cadastrado novamente.
+
+   - Em um objeto filme, crio com todos os campos e adiciono o id, que pega o id do último elemento e adicionar mais 1.
+     
+       **_:arrow_right:OBS: por isso que coloquei a função sort ao escrever o arquivo sempre em ordem crescente._**
+     
+   - No final adiciono o objeto filme no array filmes e salvo esse novo array no arquivo.
+
+   - A resposta possui o status(204) que retorna tudo foi feito com sucesso.
+
+   - Com o try catch, caso tenha algum erro é retornado o status (500) erro no servidor, além da mensagem de erro com qual erro foi dado.
+     
+<div align="center">
+  <img src="https://i.imgur.com/7iIyKhJ.png" />
+  <p>Função assincrona cadastrarFilmes</p>
+</div>
+
+ **Filme que será cadastrado**
+ 
+      {
+         "titulo": "O Jogo da Imitação",
+         "ano": "2014",
+         "genero": [
+             "Biografia",
+             "Drama",
+             "Suspense"
+         ],
+         "duracao": "1h54",
+         "diretor": [
+             "Morten Tyldum"
+         ],
+         "roteiro": [
+             "Graham Moore",
+             "Andrew Hodges"
+         ],
+         "elenco": [
+             "Benedict Cumberbatch",
+             "Keira Knightley",
+             "Matthew Goode"
+         ],
+         "imagem": "http://www.impawards.com/2014/posters/imitation_game_xlg.jpg",
+         "trailer": "https://www.imdb.com/video/vi3398414105/?ref_=ext_shr_lnk",
+         "sinopse": "Durante a segunda guerra mundial, um inglês gênio da matemática tenta decifrar o código alemão Enigma com a ajuda de seus colegas."
+     }
+
+### 5 - Requisição no Insomnia
+
+   #### 5.1 - Erro da falta de usuario e senha
+
+   <div align="center">
+     <img src="https://i.imgur.com/zb8gZ5s.png" />
+     <p>Erro no Insomnia pela falta de usuario e senha</p>
+   </div>
+
+   #### 5.2 - Erro de usuário ou senha inválida ou incorreto.
+
+   <div align="center">
+     <img src="https://i.imgur.com/vBWff9g.png" />
+     <p>Erro no Insomnia por usuário certo e senha incorreta</p>
+   </div>
+
+   #### 5.3 - Erro pela falta de algum campo no body
+
+   <div align="center">
+     <img src="https://i.imgur.com/nbk14TG.png" />
+     <p>Erro pela falta do campo ano no body</p>
+   </div>
+
+   #### 5.4 - Cadastro do filme feito com sucesso
+
+   <div align="center">
+     <img src="https://i.imgur.com/dHPOlkb.png" />
+     <p>Status(204) Cadastro feito, sem retorno no body</p>
+   </div>
+
+#### 5.5 - Filme já na lista dos filmes
+
+   <div align="center">
+     <img src="https://i.imgur.com/uY3ZfGR.png" />
+     <p>Listagem dos filmes com novo filme adicionado</p>
+   </div>
+
+##  Criação de uma rota GET para obter apenas um filme
+
+   Criar a rota GET "./filmes/:idOuTitulo", onde pesquisaremos pelo Id ou Titulo do filme
+
+   ### 1 - 
+   
