@@ -1,4 +1,4 @@
-const verificarCamposCadastro = (req, res, next) => {
+const verificarCampos = (req, res, next) => {
     const { titulo, ano, genero, duracao, diretor, roteiro,  elenco, imagem, trailer, sinopse } = req.body;
 
     console.log(titulo, ano, genero, duracao, diretor, roteiro,  elenco, imagem, trailer, sinopse)
@@ -11,7 +11,6 @@ const verificarCamposCadastro = (req, res, next) => {
     next();
 }
 
-
 module.exports = {
-    verificarCamposCadastro
+    verificarCampos,
 }

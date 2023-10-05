@@ -4,11 +4,13 @@ const filmes = require('./controller/filmes');
 
 const conferirAutentificacao = require('./middleware/autentificacao');
 
-const { verificarCamposCadastro } = require('./middleware/verificacao');
+const { verificarCampos } = require('./middleware/verificacao');
 
 rotas.get("/filmes", filmes.listarFilmes);
 rotas.get("/filmes/:idOuTitulo", filmes.obterFilme);
 
-rotas.post('/filmes', conferirAutentificacao, verificarCamposCadastro, filmes.cadastrarFilme);
+rotas.post('/filmes', conferirAutentificacao, verificarCampos, filmes.cadastrarFilme);
+
+rotas.put('/filmes/:id', conferirAutentificacao, verificarCampos, filmes.alterarFilme)
 
 module.exports = rotas;

@@ -80,7 +80,7 @@ const obterFilme = async (req, res) => {
     const { idOuTitulo } = req.params;
 
     try{
-        let filmes = await lerArquivo();
+        const filmes = await lerArquivo();
         let filme = await filmes.find((filme) => {
             return filme.id === Number(idOuTitulo);
         })
@@ -104,8 +104,51 @@ const obterFilme = async (req, res) => {
     }
 }
 
+const alterarFilme = async(req, res) => {
+    const { id } = req.params;
+    const { titulo, ano, genero, duracao, diretor, roteiro,  elenco, imagem, trailer, sinopse } = req.body;
+    try{
+        let filmes = await lerArquivo();
+        let filme = await filmes.find((filme) => {
+            return filme.id === Number(id);
+        })
+        if(!filme){
+            return res
+            .status(404)
+            .json({ mensagem: "Id não encontrado." });
+        }
+        filme = {
+            id: Number(id),
+            titulo,
+            ano,
+            genero,
+            duracao,
+            diretor,
+            roteiro,
+            elenco,
+            imagem,
+            trailer,
+            sinopse
+        }
+        filmes = await filmes.filter((filme) => {
+            return filme.id !== Number(id);
+        })
+        await filmes.push(filme);
+        await escreverArquivo(filmes);
+        return res
+            .status(204)
+            .json()
+    }catch(erro){
+        return res
+            .status(500)
+            .json({ mensagem: `Erro no servidor: ${erro.message}` });
+    }
+}
+
+
 module.exports = {
     listarFilmes,
     cadastrarFilme,
-    obterFilme
+    obterFilme,
+    alterarFilme
 }
