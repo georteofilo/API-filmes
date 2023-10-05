@@ -40,13 +40,33 @@ Nela mostrarei:
    
  - fs, vem com o Node.js
    
+## Clonando e utilizando o projeto
+
+  Para utilizar esse projeto completo siga os passo:
+
+ ### 1 - Clonar
+
+  Utilize o git clone com o link do repositório na pasta que deseja colocar o projeto
+
+ ### 2 - Instalando os pacotes
+
+   1 - Abra a pasta do projeto depois de clonar
+  
+   2 - Para instalar o pacote digite o codigo:
+
+    npm install
+
+   3 - Rodar o projeto
+
+    npm run start
+
+   4 - No Insomnia crie as rotas utilizadas e teste o projeto.
+
 ## Primeiros Passos
 
 ### 1 - Criação do arquivo package.json para aplicação
 
-  ```
-  npm init -y
-  ```
+    npm init -y
   
 ### 2 - Criação do arquivo .gitignore para não incluir o node_modules no repositório
 
@@ -57,15 +77,11 @@ Nela mostrarei:
 
 ### 3 - Instalação do pacote do Express (4.18.2)
 
-  ```
-  npm install express
-  ```
+    npm install express
   
 ### 4 - Instalação do pacote do Nodemon (3.0.1) para desenvolvimento por isso o -D
 
-  ```
-  npm install -D nodemon
-  ```
+    npm install -D nodemon
 
 ### 5 - Criação da pasta src e criação do arquivo index.js
 
