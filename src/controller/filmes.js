@@ -74,9 +74,38 @@ const cadastrarFilme = async (req, res) => {
             .status(500)
             .json({ mensagem: `Erro no servidor: ${erro.message}` });
     }
-} 
+}
+
+const obterFilme = async (req, res) => {
+    const { idOuTitulo } = req.params;
+
+    try{
+        let filmes = await lerArquivo();
+        let filme = await filmes.find((filme) => {
+            return filme.id === Number(idOuTitulo);
+        })
+        if(!filme){
+            filme = await filmes.find((filme) => {
+                return filme.titulo === idOuTitulo;
+            })
+            if(!filme){
+                return res
+                    .status(404)
+                    .json({ mensagem: "Filme não encontrado!"})
+            }
+        }   
+        return res
+            .status(200)
+            .json(filme)
+    }catch(erro){
+        return res
+            .status(500)
+            .json({ mensagem: `Erro no servidor: ${erro.message}` });
+    }
+}
 
 module.exports = {
     listarFilmes,
-    cadastrarFilme
+    cadastrarFilme,
+    obterFilme
 }
