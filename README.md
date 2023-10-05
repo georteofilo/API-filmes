@@ -168,6 +168,8 @@ Nela mostrarei:
   <img src="https://i.imgur.com/BdF55QE.png" />
 </div>
 
+## Criação de Rotas e Requisições
+
 ### Criação da rota GET "/filmes" onde lista os filmes do arquivo filmes.json
 
    O verbo GET é usado para pegar dados do servidor, aqui pegaremos os filmes que estão salvo nos dados. Por isso utilizaremos GET
