@@ -9,6 +9,18 @@ const lerArquivo = async () => {
     }
 }
 
+const escreverArquivo = async (filmes) {
+    try {
+        filmes.sort((a,b) => {
+            return a.id - b.id;
+        })
+        await fs.writeFile('./src/data/filmes.json', filmes);
+        return;
+    }catch(erro){
+        return ({ ERRO: `${erro.message}`})
+    }
+}
+
 
 const listarFilmes = async (req, res) => {
     try {
@@ -22,7 +34,6 @@ const listarFilmes = async (req, res) => {
             .json({ mensagem: `Erro no servidor: ${erro.message}` });
     }
 }
-
 
 
 module.exports = {
