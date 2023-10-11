@@ -20,6 +20,8 @@ Nela mostrarei:
 
  - Utilização de funções assincronas
 
+Os dados dos filmes foram tirados do [IMDB](https://www.imdb.com/?ref_=nv_home) e das imagens dos filme na [IMP Awards](http://www.impawards.com)
+
 ## Ferramentas
 
 - ![Insomnia](https://img.shields.io/badge/Insomnia-black?style=for-the-badge&logo=insomnia&logoColor=5849BE)
